@@ -1,0 +1,13 @@
+sequenceDiagram
+  participant UI as Actuator Visualiser
+  participant API as FastAPI Backend
+  participant MQTT as MQTT Broker
+  participant Device as Virtual/Physical Actuator
+  UI->>API: Open WebSocket /ws/live?project_id=...
+  API-->>UI: Initial actuator state snapshot
+  Device->>MQTT: Publish actuator state
+  MQTT-->>API: State message
+  API-->>UI: WebSocket state update
+  UI->>API: POST /command
+  API->>MQTT: Publish actuator command
+  MQTT-->>Device: Deliver command

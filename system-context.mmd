@@ -1,0 +1,11 @@
+flowchart LR
+  BIM[IFC Building Model] --> IFC[IFC Parser / Metadata Extraction]
+  IFC --> DB[(PostgreSQL)]
+  SIM[Sensor / Simulator] -->|MQTT publish| BROKER[Mosquitto MQTT Broker]
+  BROKER -->|MQTT subscribe| CONSUMER[Python MQTT Consumer]
+  CONSUMER -->|Resolve device + channel; persist reading| DB
+  WEB[React + TypeScript Web Client] <-->|HTTP REST| API[FastAPI Backend]
+  API <-->|SQLAlchemy| DB
+  WEB <-->|IFC model interaction| IFCVIEW[Browser IFC Viewer]
+  API -->|MQTT actuator command| BROKER
+  ACT[Actuator Visualiser] <-->|WebSocket live state| API
