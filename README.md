@@ -1,58 +1,35 @@
-# Digital Twin Framework for Building Operations
+# Building Digital Twin – Technical Showcase
 
-A collaborative university project exploring a digital-twin platform that connects building information models (BIM), IoT sensor data, backend services, and a web-based interface.
+A public-facing technical showcase of a collaborative university project that connects a building information model (BIM/IFC) with IoT sensor data, analytics, and virtual actuator visualisation through a web platform.
 
-> **Project context:** Collaborative academic project at Bauhaus-Universität Weimar. This repository is a public-facing project overview, not the original university source-code repository. It intentionally contains only the project description and an architecture illustration.
+> **Project context:** Collaborative academic project. This repository is a documentation and showcase companion, not the original application repository. It intentionally contains no application source code, building model, credentials, environment files, database dump, or deployment configuration.
 
-## Overview
+## Explore the project
 
-The platform is organised around a web frontend, a Python backend, a PostgreSQL database, and MQTT-based messaging. The project repository also contains an IFC parsing component and an actuator visualisation component.
+| File | What it explains |
+|---|---|
+| [System architecture](docs/system-architecture.md) | Components, responsibilities, and service boundaries |
+| [Data flow](docs/data-flow.md) | Sensor telemetry from MQTT to persistence and dashboard |
+| [Backend and API](docs/backend-api.md) | FastAPI service modules and documented endpoint operations |
+| [BIM / IFC integration](docs/bim-ifc-integration.md) | IFC sensor metadata extraction and browser model interaction |
+| [Frontend](docs/frontend.md) | Web dashboard, charts, model viewer, and actuator UI |
+| [Data model](docs/data-model.md) | Conceptual entities and numeric/non-numeric measurements |
+| [Deployment overview](docs/deployment.md) | Containerised service layout (descriptive only) |
+| [Technology stack](docs/technology-stack.md) | Technologies grouped by architectural layer |
+| [Engineering decisions](docs/engineering-decisions.md) | Integration patterns and design trade-offs |
 
-The intended workflow is to ingest sensor messages through MQTT, process and persist the data in the backend/database layer, and make data available to the web application. The frontend includes dashboard and analytics views, alongside BIM-related functionality in the broader project.
-
-## System architecture
+## Visual overview
 
 ![System architecture](images/system-architecture.jpg)
 
-*Architecture illustration included in the supplied project archive. It represents the documented system structure; individual modules and integrations may have different implementation status.*
+Additional editable diagrams are available in [`diagrams/`](diagrams/).
 
-## Technology stack
+## Sanitised examples
 
-| Area | Technologies evidenced in the project source |
-|---|---|
-| Frontend | React, TypeScript, Material UI, React Query, Three.js, web-ifc |
-| Backend | Python, FastAPI, SQLAlchemy |
-| Data storage | PostgreSQL |
-| Messaging | MQTT, Eclipse Mosquitto, Paho MQTT |
-| BIM / IFC | IFC parsing and web-based IFC tooling |
-| Deployment | Docker, Docker Compose, Nginx |
+The [`examples/`](examples/) directory contains illustrative MQTT topic and payload examples. They are generic examples, not real building telemetry or credentials.
 
-## Main components
+## Scope and attribution
 
-- **Web frontend:** React-based user interface with dashboard and analytics-related pages, plus BIM/IFC-related frontend dependencies.
-- **Backend API:** FastAPI service for application endpoints and database access.
-- **Sensor data pipeline:** MQTT broker, producer/simulator, and consumer components for message-based sensor-data flow.
-- **Database:** PostgreSQL persistence for project data.
-- **IFC processing:** Python utilities for parsing IFC model information and preparing project data.
-- **Actuator visualisation:** A separate React-based visualiser for virtual actuator states.
-- **Containerisation:** Dockerfiles and Docker Compose configuration for running the platform components.
+The original implementation is maintained in a university GitLab repository that may require institutional access. This public repository documents the system at an architectural level and does not redistribute that implementation. The platform was developed collaboratively; this repository does not claim sole authorship. Personal contribution details should be added only by the project contributor and should describe work they actually completed.
 
-## My contribution
-
-This was a collaborative university project. Add only the modules, implementation tasks, and decisions you personally worked on before publishing this section. Do not imply sole authorship of the complete platform.
-
-Suggested format:
-
-- **Implemented:** [specific feature/module you personally implemented]
-- **Contributed to:** [specific integration, testing, modelling, or documentation task]
-- **Tools used directly:** [technologies you personally used]
-
-## Scope and access
-
-The original source code is hosted in a university GitLab repository and may require university authentication. This public showcase is provided to make the project context and high-level architecture understandable without access to that repository. It does not redistribute the original source code, IFC building model, environment files, credentials, or deployment configuration.
-
-## Notes
-
-- This overview describes the collaborative project based on the supplied repository documentation and source structure.
-- The architecture image is included as a technical illustration, not as a claim that every depicted connection is fully operational or real-time.
-- Add application screenshots only if you have permission to share them publicly and they do not expose confidential building, sensor, or university information.
+The architecture image is included from the supplied project archive. Publish it only if project/university rules permit sharing it. No IFC model, sensor export, environment file, deployment secrets, or original source files are included.
