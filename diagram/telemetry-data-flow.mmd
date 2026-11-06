@@ -1,0 +1,13 @@
+flowchart TD
+  A[Sensor or simulator] -->|Topic + timestamp/value payload| B[Mosquitto broker]
+  B -->|Subscribed message| C[Python MQTT consumer]
+  C --> D[Parse topic: device and channel type]
+  D --> E[Resolve channel ID from metadata]
+  E --> F[Parse timestamp and value]
+  F --> G{Value numeric?}
+  G -->|Yes| H[Numeric measurement table]
+  G -->|No| I[Non-numeric measurement table]
+  H --> J[(PostgreSQL)]
+  I --> J
+  J --> K[FastAPI live / analytics endpoints]
+  K --> L[React dashboard and charts]
