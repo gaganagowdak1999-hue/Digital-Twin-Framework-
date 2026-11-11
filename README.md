@@ -22,7 +22,7 @@ A public-facing technical showcase of a collaborative university project that co
 
 ![System architecture](images/system-architecture.jpg)
 
-Additional editable diagrams are available in [`diagrams/`](diagrams/).
+Additional editable diagrams are available in [`diagrams/`](diagram/).
 
 ## Sanitised examples
 
